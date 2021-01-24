@@ -1,8 +1,7 @@
 {
-  "name": "jsgenerate",
-  "version": "0.0.1",
+  "name": "@king011/jsgenerate",
+  "version": "1.0.0",
   "description": "generate code by js and art-template",
-  "main": "dist/index.js",
   "bin": "dist/main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -22,5 +21,14 @@
   "bugs": {
     "url": "https://gitlab.com/king011_js/jsgenerate/issues"
   },
-  "homepage": "https://gitlab.com/king011_js/jsgenerate#readme"
+  "homepage": "https://gitlab.com/king011_js/jsgenerate#readme",
+  "dependencies": {
+    "@types/uuid": "^8.3.0",
+    "art-template": "^4.13.2",
+    "commander": "^7.0.0",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "@types/node": "^14.14.22"
+  }
 }
