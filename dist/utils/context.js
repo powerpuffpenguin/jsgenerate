@@ -80,9 +80,8 @@ function Match(str) {
     return match.test(str);
 }
 var Context = /** @class */ (function () {
-    function Context(pkg, name, root, output) {
-        this.pkg = pkg;
-        this.name = name;
+    function Context(pkg, name, tag, root, output) {
+        this.tag = tag;
         this.root = root;
         this.output = output;
         this.data = new Map();
@@ -90,18 +89,47 @@ var Context = /** @class */ (function () {
         if (!(typeof pkg === 'string')) {
             throw new Error("unknow package");
         }
-        if (!(typeof name === 'string')) {
-            throw new Error("unknow name");
-        }
         pkg = pkg.trim();
-        name = name.trim();
         if (pkg.length == 0 || !Match(pkg)) {
             throw new Error("not supported package name");
         }
+        if (!(typeof name === 'string')) {
+            name = pkg;
+            var f1 = name.lastIndexOf(".");
+            var f2 = name.lastIndexOf("/");
+            if (f2 != -1) {
+                if (f1 == -1) {
+                    f1 = f2;
+                }
+                else {
+                    f1 = f1 > f2 ? f1 : f2;
+                }
+            }
+            if (f1 != -1) {
+                name = name.substr(f1 + 1);
+            }
+        }
+        name = name.trim();
         if (name.length == 0 || !Match(name)) {
             throw new Error("not supported project name");
         }
+        this.pkg_ = pkg;
+        this.name_ = name;
     }
+    Object.defineProperty(Context.prototype, "pkg", {
+        get: function () {
+            return this.pkg_;
+        },
+        enumerable: false,
+        configurable: true
+    });
+    Object.defineProperty(Context.prototype, "name", {
+        get: function () {
+            return this.name_;
+        },
+        enumerable: false,
+        configurable: true
+    });
     Context.prototype.serve = function (renderFile, renderDir) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {

@@ -1,13 +1,16 @@
 /// <reference types="node" />
 import { Stats } from "fs";
 export declare class Context {
-    readonly pkg: string;
-    readonly name: string;
+    readonly tag: string;
     readonly root: string;
     readonly output: string;
     readonly data: Map<string, any>;
     readonly version = "1.0.0";
-    constructor(pkg: string, name: string, root: string, output: string);
+    private pkg_;
+    private name_;
+    get pkg(): string;
+    get name(): string;
+    constructor(pkg: string, name: string, tag: string, root: string, output: string);
     serve(renderFile: (name: string, src: string, stat: Stats) => void | Promise<undefined>, renderDir: (name: string, src: string, stat: Stats) => void | Promise<undefined>): Promise<void>;
     private _name;
     private _serve;

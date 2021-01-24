@@ -85,8 +85,15 @@ function initCommand(parent, path) {
                     ts.forEach(function (t) {
                         cmd.command(t.filename)
                             .description(t.description)
-                            .option("-n, --name []", "project name").option("-p, --package []", "package name").action(function () {
-                            var context = new context_1.Context(this.opts()["package"], this.opts()["name"], path_2.join(t.dirname, t.filename), process.cwd());
+                            .option("-n, --name []", "project name").option("-p, --package []", "package name").option("-t, --tag []", "code generate tag").action(function () {
+                            var tag = this.opts()["tag"];
+                            if (typeof tag === "string") {
+                                tag = tag.trim();
+                            }
+                            else {
+                                tag = "";
+                            }
+                            var context = new context_1.Context(this.opts()["package"], this.opts()["name"], tag, path_2.join(t.dirname, t.filename), process.cwd());
                             t.generate(context);
                         });
                     });

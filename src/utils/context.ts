@@ -17,25 +17,48 @@ function Match(str: string): boolean {
 export class Context {
     readonly data = new Map<string, any>()
     readonly version = Version
-    constructor(public readonly pkg: string,
-        public readonly name: string,
+    private pkg_: string
+    private name_: string
+    get pkg(): string {
+        return this.pkg_
+    }
+    get name(): string {
+        return this.name_
+    }
+    constructor(pkg: string,
+        name: string,
+        public readonly tag: string,
         public readonly root: string,
         public readonly output: string,
     ) {
         if (!(typeof pkg === 'string')) {
             throw new Error(`unknow package`)
         }
-        if (!(typeof name === 'string')) {
-            throw new Error(`unknow name`)
-        }
         pkg = pkg.trim()
-        name = name.trim()
         if (pkg.length == 0 || !Match(pkg)) {
             throw new Error(`not supported package name`)
         }
+        if (!(typeof name === 'string')) {
+            name = pkg
+            let f1 = name.lastIndexOf(".")
+            let f2 = name.lastIndexOf("/")
+            if (f2 != -1) {
+                if (f1 == -1) {
+                    f1 = f2
+                } else {
+                    f1 = f1 > f2 ? f1 : f2
+                }
+            }
+            if (f1 != -1) {
+                name = name.substr(f1 + 1)
+            }
+        }
+        name = name.trim()
         if (name.length == 0 || !Match(name)) {
             throw new Error(`not supported project name`)
         }
+        this.pkg_ = pkg
+        this.name_ = name
     }
     async serve(renderFile: (name: string, src: string, stat: Stats) => void | Promise<undefined>, renderDir: (name: string, src: string, stat: Stats) => void | Promise<undefined>) {
         await this._serve(this.root, undefined, renderFile, renderDir)

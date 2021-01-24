@@ -33,9 +33,18 @@ export async function initCommand(parent: Command, path: string) {
                 `project name`,
             ).option(`-p, --package []`,
                 `package name`,
+            ).option(`-t, --tag []`,
+                `code generate tag`,
             ).action(function () {
+                let tag = this.opts()["tag"]
+                if (typeof tag === "string") {
+                    tag = tag.trim()
+                } else {
+                    tag = ""
+                }
                 const context = new Context(
                     this.opts()["package"], this.opts()["name"],
+                    tag,
                     join(t.dirname, t.filename), process.cwd(),
                 )
                 t.generate(context)
