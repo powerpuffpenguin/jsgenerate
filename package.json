@@ -1,0 +1,26 @@
+{
+  "name": "jsgenerate",
+  "version": "0.0.1",
+  "description": "generate code by js and art-template",
+  "main": "dist/index.js",
+  "bin": "dist/main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com/king011_js/jsgenerate.git"
+  },
+  "keywords": [
+    "generate",
+    "auto",
+    "code",
+    "tools"
+  ],
+  "author": "zuiwuchang",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://gitlab.com/king011_js/jsgenerate/issues"
+  },
+  "homepage": "https://gitlab.com/king011_js/jsgenerate#readme"
+}
