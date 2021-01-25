@@ -14,7 +14,8 @@ export class Template {
         public readonly filename: string,
         public readonly generate: Function) {
     }
-    description: string
+    description: string = ''
+    tag: string = ''
 }
 async function createTemplate(dirname: string, filename: string): Promise<Template> {
     const ctx = require(join(dirname, filename, "jsgenerate", "main.js"))
@@ -22,6 +23,9 @@ async function createTemplate(dirname: string, filename: string): Promise<Templa
         const result = new Template(dirname, filename, ctx.jsgenerate)
         if (typeof ctx.description === 'string') {
             result.description = ctx.description
+        }
+        if (typeof ctx.tag === 'string') {
+            result.tag = ctx.tag
         }
         return result
     }

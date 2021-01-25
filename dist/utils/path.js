@@ -61,6 +61,8 @@ var Template = /** @class */ (function () {
         this.dirname = dirname;
         this.filename = filename;
         this.generate = generate;
+        this.description = '';
+        this.tag = '';
     }
     return Template;
 }());
@@ -74,6 +76,9 @@ function createTemplate(dirname, filename) {
                 result = new Template(dirname, filename, ctx.jsgenerate);
                 if (typeof ctx.description === 'string') {
                     result.description = ctx.description;
+                }
+                if (typeof ctx.tag === 'string') {
+                    result.tag = ctx.tag;
                 }
                 return [2 /*return*/, result];
             }

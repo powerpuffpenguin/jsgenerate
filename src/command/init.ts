@@ -35,15 +35,22 @@ export async function initCommand(parent: Command, path: string) {
                 `package name`,
             ).option(`-t, --tag []`,
                 `code generate tag`,
+            ).option(`--list-tag`,
+                `list supported tag`,
             ).action(function () {
-                let tag = this.opts()["tag"]
+                const opts = this.opts()
+                if (opts["listTag"]) {
+                    console.log(t.tag)
+                    return
+                }
+                let tag = opts["tag"]
                 if (typeof tag === "string") {
                     tag = tag.trim()
                 } else {
                     tag = ""
                 }
                 const context = new Context(
-                    this.opts()["package"], this.opts()["name"],
+                    opts["package"], opts["name"],
                     tag,
                     join(t.dirname, t.filename), process.cwd(),
                 )

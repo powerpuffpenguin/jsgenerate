@@ -5,7 +5,7 @@ export declare class Context {
     readonly root: string;
     readonly output: string;
     readonly data: Map<string, any>;
-    readonly version = "1.0.1";
+    readonly version = "1.0.2";
     private pkg_;
     private name_;
     get pkg(): string;

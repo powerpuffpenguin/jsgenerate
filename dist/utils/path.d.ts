@@ -5,5 +5,6 @@ export declare class Template {
     readonly generate: Function;
     constructor(dirname: string, filename: string, generate: Function);
     description: string;
+    tag: string;
 }
 export declare function listTemplates(filename: string): Promise<Array<Template>>;
