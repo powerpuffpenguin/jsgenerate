@@ -1,6 +1,6 @@
 {
   "name": "@king011/jsgenerate",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "generate code by js and art-template",
   "bin": "dist/main.js",
   "scripts": {

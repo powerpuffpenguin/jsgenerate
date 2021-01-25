@@ -85,18 +85,21 @@ function initCommand(parent, path) {
                     ts.forEach(function (t) {
                         cmd.command(t.filename)
                             .description(t.description)
-                            .option("-n, --name []", "project name").option("-p, --package []", "package name").option("-t, --tag []", "code generate tag").option("--list-tag", "list supported tag").action(function () {
+                            .option("-n, --name []", "project name").option("-p, --package []", "package name").option("-t, --tag [tags...]", "code generate tag").option("--list-tag", "list supported tag").action(function () {
                             var opts = this.opts();
                             if (opts["listTag"]) {
                                 console.log(t.tag);
                                 return;
                             }
-                            var tag = opts["tag"];
-                            if (typeof tag === "string") {
-                                tag = tag.trim();
-                            }
-                            else {
-                                tag = "";
+                            var tag = new Array();
+                            var tags = opts["tag"];
+                            if (Array.isArray(tags)) {
+                                for (var i = 0; i < tags.length; i++) {
+                                    var element = tags[i];
+                                    if (typeof element === "string") {
+                                        tag.push(element);
+                                    }
+                                }
                             }
                             var context = new context_1.Context(opts["package"], opts["name"], tag, path_2.join(t.dirname, t.filename), process.cwd());
                             t.generate(context);

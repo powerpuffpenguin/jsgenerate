@@ -27,7 +27,7 @@ export class Context {
     }
     constructor(pkg: string,
         name: string,
-        public readonly tag: string,
+        public readonly tag: Array<string>,
         public readonly root: string,
         public readonly output: string,
     ) {

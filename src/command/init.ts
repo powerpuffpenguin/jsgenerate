@@ -2,6 +2,7 @@ import { Command } from "commander";
 import { listTemplates } from "../utils/path";
 import { Context } from "../utils/context";
 import { join } from "path";
+import { isArray } from "util";
 
 export async function initCommand(parent: Command, path: string) {
     const cmd = parent.command(`init`)
@@ -33,7 +34,7 @@ export async function initCommand(parent: Command, path: string) {
                 `project name`,
             ).option(`-p, --package []`,
                 `package name`,
-            ).option(`-t, --tag []`,
+            ).option(`-t, --tag [tags...]`,
                 `code generate tag`,
             ).option(`--list-tag`,
                 `list supported tag`,
@@ -43,11 +44,15 @@ export async function initCommand(parent: Command, path: string) {
                     console.log(t.tag)
                     return
                 }
-                let tag = opts["tag"]
-                if (typeof tag === "string") {
-                    tag = tag.trim()
-                } else {
-                    tag = ""
+                const tag = new Array<string>()
+                let tags = opts["tag"]
+                if (Array.isArray(tags)) {
+                    for (let i = 0; i < tags.length; i++) {
+                        const element = tags[i]
+                        if (typeof element === "string") {
+                            tag.push(element)
+                        }
+                    }
                 }
                 const context = new Context(
                     opts["package"], opts["name"],
