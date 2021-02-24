@@ -14,6 +14,12 @@ After installing the nodejs environment, execute the following instructions
 npm install -g @king011/jsgenerate
 ```
 
+# update
+
+```
+npm update -g @king011/jsgenerate
+```
+
 # bash complete
 
 Entering the command `jsgenerate complete` will generate a bash complete auto-complete script for linux

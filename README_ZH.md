@@ -14,6 +14,12 @@ nodejs 環境下的一個代碼生成 工具
 npm install -g @king011/jsgenerate
 ```
 
+# 更新
+
+```
+npm update -g @king011/jsgenerate
+```
+
 # bash complete
 
 輸入 `jsgenerate complete`  指令 將會爲linux生成 bash complete 自動完成腳本
