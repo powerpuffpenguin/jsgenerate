@@ -1,6 +1,6 @@
 {
   "name": "@king011/jsgenerate",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "generate code by js and art-template",
   "bin": "dist/main.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@gitlab.com/king011_js/jsgenerate.git"
+    "url": "git+ssh://git@github.com:powerpuffpenguin/jsgenerate.git"
   },
   "keywords": [
     "generate",
@@ -19,9 +19,9 @@
   "author": "zuiwuchang",
   "license": "GPL-3.0-or-later",
   "bugs": {
-    "url": "https://gitlab.com/king011_js/jsgenerate/issues"
+    "url": "https://github.com/powerpuffpenguin/jsgenerate/issues"
   },
-  "homepage": "https://gitlab.com/king011_js/jsgenerate#readme",
+  "homepage": "https://github.com/powerpuffpenguin/jsgenerate#readme",
   "dependencies": {
     "@types/uuid": "^8.3.0",
     "art-template": "^4.13.2",

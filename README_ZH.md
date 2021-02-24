@@ -1,14 +1,14 @@
 # jsgenerate
 
-[中文](https://github.com/powerpuffpenguin/jsgenerate/blob/master/README_ZH.md.md)
+[English](https://github.com/powerpuffpenguin/jsgenerate/blob/master/README_ZH.md.md)
 
-A code generation tool in nodejs environment
+nodejs 環境下的一個代碼生成 工具 
 
-With the help of js flexibility and art-template templates to automatically generate some user-definable template codes
+藉助 js的靈活 和 art-template 模板 來自動生成一些用戶 可定義的 模板代碼 
 
-# install
+# 安裝
 
-After installing the nodejs environment, execute the following instructions
+在安裝nodejs環境後 執行 如下指令
 
 ```
 npm install -g @king011/jsgenerate
@@ -16,11 +16,11 @@ npm install -g @king011/jsgenerate
 
 # bash complete
 
-Entering the command `jsgenerate complete` will generate a bash complete auto-complete script for linux
+輸入 `jsgenerate complete`  指令 將會爲linux生成 bash complete 自動完成腳本
 
 # init
 
-Use the `jsgenerate init` command to create the initialization code using the specified template in the current directory
+使用 `jsgenerate init` 指令可以在當前目錄下使用 指定模板創建初始化代碼
 
 ```
 Options:
@@ -35,32 +35,32 @@ Options:
 jsgenerate init jsgenerate_grpc -p penguin/example -t default -t init-supplement
 ```
 
-* **jsgenerate_grpc** is the name of the template used 
-* **-p** specify the package name of the project
-* **-t** is the label passed to the template. The template can define the meaning of the label.
+* **jsgenerate_grpc** 是使用的模板名稱 
+* **-p** 指定項目的包名
+* **-t** 是傳遞給模板的 標籤 模板可以自行定義標籤的含義
 
 # template 
 
-If the environment variable **JS_GENERATE_TEMPLATE** is specified, the template is stored in the path specified by JS_GENERATE_TEMPLATE, otherwise it is stored in the path of **~/.jsgenerate**
+如果指定了環境變量 **JS_GENERATE_TEMPLATE** 則模板 存儲在 JS_GENERATE_TEMPLATE 指定的路徑下 否則存儲在 **~/.jsgenerate** 路徑下
 
 ## init template
 
-You can refer to [jsgenerate_grpc](https://github.com/powerpuffpenguin/jsgenerate_grpc) to implement your own template
+你可以 參考 [jsgenerate_grpc](https://github.com/powerpuffpenguin/jsgenerate_grpc) 來實現你自己的模板
 
-To create a template used by the init command, you need to follow the steps below
+要創建一個 init 指令使用的模板 需要遵循如下步驟
 
-1. Create a new folder under the init folder of the template root path, such as web (jsgenerate will use the name of this folder as the template name)
-2. Create a js file of web/jsgenerate/main.js and export three attributes of description tag jsgenerate
+1. 在模板根路徑的init檔案夾下創建一個 新檔案夾 例如 web (jsgenerate會使用此檔案夾的名稱作爲模板名)
+2. 創建一個 web/jsgenerate/main.js 的js檔案 並且導出 description tag jsgenerate 三個屬性
 
-Now the web template has been created, you can use `jsgenerate init jsgenerate_grpc -p xxx` to use this template
+此時web模板已經創建好 你可以使用 `jsgenerate init jsgenerate_grpc -p xxx` 來使用此模板
 
-* **description** is a string used to describe the function of this template
-* **tag** is used to indicate the tags supported by this template
-* **jsgenerate** is a function with the signature `function jsgenerate(context: Context)`, which will be called by the jsgenerate program. You need to implement code generation in this function
+* **description** 是一個字符串 用於描述 此模板的功能
+* **tag** 用於提示此模板支持的標籤
+* **jsgenerate** 是一個簽名爲 `function jsgenerate(context: Context)` 的函數 會被jsgenerate 程式呼叫，你需要才此函數中實現代碼生成工作
 
 # Context
 
-The incoming parameter Context of jsgenerate generates the context required by the code and some useful member functions
+jsgenerate 的傳入參數 Context 生成代碼所需要的 上下文 以及一些有用的成員函數
 
 ```
 /// <reference types="node" />
@@ -121,5 +121,5 @@ export declare class Context {
 }
 ```
 
-* **serve** is the most important function. You need to call this function and pass in two callback functions to create files and folders for the project
-* **template compile render** three functions are used to call the art-template template engine
+* **serve** 是最重要的函數 你需要調用此函數 並傳入兩個回調函數 用於爲項目創建檔案和檔案夾
+* **template compile render** 三個函數用於 調用 art-template 模板引擎
