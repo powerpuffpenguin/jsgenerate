@@ -1,6 +1,6 @@
 # jsgenerate
 
-[中文](https://github.com/powerpuffpenguin/jsgenerate/blob/master/README_ZH.md.md)
+[中文](https://github.com/powerpuffpenguin/jsgenerate/blob/master/README_ZH.md)
 
 A code generation tool in nodejs environment
 

@@ -1,6 +1,6 @@
 # jsgenerate
 
-[English](https://github.com/powerpuffpenguin/jsgenerate/blob/master/README_ZH.md.md)
+[English](https://github.com/powerpuffpenguin/jsgenerate/blob/master/README_ZH.md)
 
 nodejs 環境下的一個代碼生成 工具 
 
@@ -56,7 +56,7 @@ jsgenerate init jsgenerate_grpc -p penguin/example -t default -t init-supplement
 
 * **description** 是一個字符串 用於描述 此模板的功能
 * **tag** 用於提示此模板支持的標籤
-* **jsgenerate** 是一個簽名爲 `function jsgenerate(context: Context)` 的函數 會被jsgenerate 程式呼叫，你需要才此函數中實現代碼生成工作
+* **jsgenerate** 是一個簽名爲 `function jsgenerate(context: Context)` 的函數 會被jsgenerate 程式呼叫，你需要在此函數中實現代碼生成工作
 
 # Context
 
