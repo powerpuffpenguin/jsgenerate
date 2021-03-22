@@ -1,6 +1,6 @@
 # jsgenerate
 
-[English](https://github.com/powerpuffpenguin/jsgenerate/blob/master/README_ZH.md)
+[English](https://github.com/powerpuffpenguin/jsgenerate/blob/master/README.md)
 
 nodejs 環境下的一個代碼生成 工具 
 
